@@ -1,7 +1,7 @@
 <?php
 ob_start();
 define('API_KEY','270127677:AAHjJCk7v_4-9T0gZWxw84WvgR8He2LpNJU');
-$admin = "239607076";
+$admin = "159887854";
 function bot($method,$datas=[]){
     $url = "https://api.telegram.org/bot".API_KEY."/".$method;
     $ch = curl_init();
@@ -30,7 +30,8 @@ if (isset($update->edited_message)){
   $eid = $editm->message_id;
   $edname = $editm->from->first_name;
   $jsu = json_decode(file_get_contents(__DIR__.'/users/'.$eid.'.json'));
-  $text = "<code>Mr.</code><b>".$edname."</b>\n<b>You Are Changed The Message:</b>\n<b>Old Message:</b>
+  $text = "<b>".$edname."</b>\nمن دیدم که چی گفتی بازم ادیت کنی میفهمم
+  گفتی:
 ".$jsu;
   $id = $update->edited_message->chat->id;
   bot('sendmessage',[
@@ -44,7 +45,7 @@ if (isset($update->edited_message)){
   //$up = file_get_contents(__DIR__.'/users/'.$eid.'.json');
   //str_replace("edited_message","message",$up);
 }elseif(preg_match('/^\/([Ss]tart)/',$text1)){
-  $text = "<b>Welcome To Do Not Edit Bot</b>\n<a href='https://telegram.me/DoNotEditBot?startgroup=new'>Add Me To Group</a>
+  $text = "به ربات ادیت نکن\nخوش آمدید\nبرای اد کردن من به گروه بر روی لینک زیر بزنید\nhttps://telegram.me/DontEdit_BOT?startgroup=new";
   bot('sendmessage',[
     'chat_id'=>$chat_id,
     'text'=>$text,
@@ -52,10 +53,10 @@ if (isset($update->edited_message)){
     'reply_markup'=>json_encode([
       'inline_keyboard'=>[
         [
-          ['text'=>'David','url'=>'https://telegram.me/MrDear']
+          ['text'=>'alireza_PT','url'=>'https://telegram.me/alireza_PT']
         ],
         [
-          ['text'=>'Mr.Fast Team','url'=>'https://telegram.me/MrFastTeam']
+          ['text'=>'CreateBOT','url'=>'https://telegram.me/create_antispam_bot']
         ]
       ]
     ])
@@ -72,7 +73,7 @@ if (isset($update->edited_message)){
 }elseif(isset($update->message-> new_chat_member )){
 bot('sendMessage',[
       'chat_id'=>$chat_id,
-      'text'=>"<b>Welcome To Group</b>"
+      'text'=>"به گروه خوش آمدید "
     ]);
 }
   
