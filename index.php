@@ -43,6 +43,7 @@ if (isset($update->edited_message)){
   //$up = file_get_contents(__DIR__.'/users/'.$eid.'.json');
   //str_replace("edited_message","message",$up);
 }elseif(preg_match('/^\/([Ss]tart)/',$text1)){
+  $edname = $editm->from->first_name;
   $text = "<b>Hi Mr.</b>".$edname."\n<i>Welcome To</i> <b>Do Not Edit Bot</b>. \nPlease Click To Button <code>Add Me To Group</code>";
   bot('sendmessage',[
     'chat_id'=>$chat_id,
