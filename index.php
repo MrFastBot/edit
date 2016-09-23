@@ -1,6 +1,6 @@
 <?php
 ob_start();
-define('API_KEY','270127677:AAHjJCk7v_4-9T0gZWxw84WvgR8He2LpNJU');
+define('API_KEY','273817593:AAEHXt8ph4ROxEwiRChR8OyBlVKZLEwi5kI');
 $admin = "239607076";
 function bot($method,$datas=[]){
     $url = "https://api.telegram.org/bot".API_KEY."/".$method;
@@ -21,7 +21,7 @@ $editm = $update->edited_message;
 $mid = $message->message_id;
 $chat_id = $message->chat->id;
 $text1 = $message->text;
-$fadmin = $message->from->id;
+$fadmin = $message->from->id;4
 $file_o = __DIR__.'/users/'.$mid.'.json';
 file_put_contents($file_o,json_encode($update->message->text));
 chmod($file_o,0777);
@@ -30,8 +30,11 @@ if (isset($update->edited_message)){
   $eid = $editm->message_id;
   $edname = $editm->from->first_name;
   $jsu = json_decode(file_get_contents(__DIR__.'/users/'.$eid.'.json'));
-  $text = "<b>Mr.".$edname."</b>\n<i>i saw what you said</i>\n<b>You said</b>\n".$jsu;
-  $id = $update->edited_message->chat->id;
+ $text = "<b>Mr.".$edname."</b>
+ <i>I saw what you said</i>
+ <b>You Said:</b>
+".$jsu;
+$id = $update->edited_message->chat->id;
   bot('sendmessage',[
     'chat_id'=>$id,
     'reply_to_message_id'=>$eid,
