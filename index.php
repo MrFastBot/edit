@@ -73,6 +73,7 @@ if (isset($update->edited_message)){
 }elseif(isset($update->message-> new_chat_member )){
 bot('sendMessage',[
       'chat_id'=>$chat_id,
+      'parse_mode'=>'html',
       'text'=>"<i>Welcome To </i><b>Group</b>!"
     ]);
 }
