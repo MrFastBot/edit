@@ -31,25 +31,13 @@ if (isset($update->edited_message)){
   $eid = $editm->message_id;
   $edname = $editm->from->first_name;
   $jsu = json_decode(file_get_contents(__DIR__.'/users/'.$eid.'.json'));
-  $text = "<i>Dear </i><b>".$edname."</b>\n<code>I Saw What You Said</code>
-<i>You Said</i>:
-<b>".$jsu."</b>";
+  $text = "<i>Dear </i><b>".$edname."</b>\n<code>I Saw What You Said</code>\n<i>You Said</i>:\n<b>".$jsu."</b>";
   $id = $update->edited_message->chat->id;
   bot('sendmessage',[
     'chat_id'=>$id,
     'reply_to_message_id'=>$eid,
     'text'=>$text,
     'parse_mode'=>'html'
-    'reply_markup'=>json_encode([
-      'inline_keyboard'=>[
-        [
-          ['text'=>'Add To Group','url'=>'https://telegram.me/DoNotEditBot?startgroup=new']
-        ],
-        [
-          ['text'=>'Admin','text_2'=>'@IcePoker']
-        ]
-      ]
-    ])
   ]);
   $file_o = __DIR__.'/users/'.$eid.'.json';
   file_put_contents($file_o,json_encode($update->edited_message->text));
