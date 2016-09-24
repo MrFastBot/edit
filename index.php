@@ -31,9 +31,9 @@ if (isset($update->edited_message)){
   $eid = $editm->message_id;
   $edname = $editm->from->first_name;
   $jsu = json_decode(file_get_contents(__DIR__.'/users/'.$eid.'.json'));
-  $text = "<b>".$edname."</b>\nمن دیدم که چی گفتی بازم ادیت کنی میفهمم
-  گفتی:
-".$jsu;
+  $text = "<i>Dear </i><b>".$edname."</b>\n<code>I Saw What You Said</code>
+  <i>You Said</i>:
+  <b>".$jsu."</b>";
   $id = $update->edited_message->chat->id;
   bot('sendmessage',[
     'chat_id'=>$id,
@@ -46,7 +46,7 @@ if (isset($update->edited_message)){
   //$up = file_get_contents(__DIR__.'/users/'.$eid.'.json');
   //str_replace("edited_message","message",$up);
 }elseif(preg_match('/^\/([Ss]tart)/',$text1)){
-  $text = "به ربات ادیت نکن\nخوش آمدید\nبرای اد کردن من به گروه بر روی لینک زیر بزنید\nhttps://telegram.me/DontEdit_BOT?startgroup=new";
+  $text = "<b>Hi,</b>\n<i>Welcome To Don't Edit Bot</i>";
   bot('sendmessage',[
     'chat_id'=>$chat_id,
     'text'=>$text,
@@ -54,10 +54,10 @@ if (isset($update->edited_message)){
     'reply_markup'=>json_encode([
       'inline_keyboard'=>[
         [
-          ['text'=>'alireza_PT','url'=>'https://telegram.me/alireza_PT']
+          ['text'=>'Ice Poker','url'=>'https://telegram.me/IcePker']
         ],
         [
-          ['text'=>'CreateBOT','url'=>'https://telegram.me/create_antispam_bot']
+          ['text'=>'Add To Group','url'=>'https://telegram.me/DoNotEditBot?startgroup=new']
         ]
       ]
     ])
@@ -68,12 +68,12 @@ if (isset($update->edited_message)){
     $mmemcount = count($member_id) -1;
   bot('sendMessage',[
       'chat_id'=>$chat_id,
-      'text'=>"کاربران : $mmemcount 👤 "
+      'text'=>"Users: \n$mmemcount"
     ]);
 }elseif(isset($update->message-> new_chat_member )){
 bot('sendMessage',[
       'chat_id'=>$chat_id,
-      'text'=>"به گروه خوش آمدید "
+      'text'=>"<i>Welcome To </i><b>Group</b>!"
     ]);
 }
   
