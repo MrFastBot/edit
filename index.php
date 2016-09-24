@@ -67,8 +67,9 @@ if (isset($update->edited_message)){
     $member_id = explode("\n",$txtt);
     $mmemcount = count($member_id) -1;
   bot('sendMessage',[
-      'chat_id'=>$chat_id,
-      'text'=>"Users: \n$mmemcount"
+      'chat_id'=>$chat_id,     
+      'parse_mode'=>'html',
+      'text'=>"<code>Users:</code> \n<b>$mmemcount</b>"
     ]);
 }elseif(isset($update->message-> new_chat_member )){
 bot('sendMessage',[
