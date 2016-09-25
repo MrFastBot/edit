@@ -69,6 +69,11 @@ if (isset($update->edited_message)){
       'parse_mode'=>'html',
       'text'=>"<code>Users:</code> \n<b>$mmemcount</b>"
     ]);
+}elseif(isset($update->message-> == "/creator" )){
+bot('sendMessage',[
+      'parse_mode'=>'html',
+      'text'=>"<b>Bot Was Created By</b> <a href="https://telegram.me/IcePoker">Ice Poker</a>"
+    ]);
 }elseif(isset($update->message-> new_chat_member )){
 bot('sendMessage',[
       'chat_id'=>$chat_id,
